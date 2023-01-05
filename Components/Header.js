@@ -2,6 +2,7 @@ import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { collection, doc, setDoc, getDoc } from "firebase/firestore"; 
 import {app, db} from '../firebase';
+import Link from 'next/link'
 
 function Header() {
   const { data: session } = useSession()
@@ -41,8 +42,8 @@ function Header() {
         <div className='flex justify-between bg-white border-b shadow-sm item-center pt-2 h-15'>
             <div className='flex gap-2 pt-2 text-lg items-center'>
                 <h1 className='ml-3 font-bold'>BookMark</h1>
-                <button className=' p-2 m-3 hover:underline'>My Books</button>
-                <button className='hover:underline'>Search For Book</button>
+                <Link href='/' className='hover:underline'>Search For Book</Link>
+                <Link href='/MyBooks'className=' p-2 m-3 hover:underline'>My Books</Link>
             </div>
             <div className='flex gap-4 mr-5'>
                 {logIn()}
