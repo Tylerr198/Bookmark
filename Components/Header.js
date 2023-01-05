@@ -1,9 +1,26 @@
 import React from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
+import { collection, doc, setDoc, getDoc } from "firebase/firestore"; 
+import {app, db} from '../firebase';
 
 function Header() {
   const { data: session } = useSession()
 
+    async function addUser (){
+    const docRef = doc(db,'users',session.user.email)
+    const docSnap = await getDoc(docRef)
+    if (docSnap.exists()){
+      return;
+    } else{
+      await setDoc(doc(db,'users',session.user.email),{
+        name:session.user.name,
+        email:session.user.email,
+      })
+    }
+  }
+  if (session){
+    addUser()
+  }
   const logIn = ()=>{
     if (session) {
       return (

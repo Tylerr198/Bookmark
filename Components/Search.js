@@ -29,7 +29,7 @@ function Search() {
                 <button type='submit'><MagnifyingGlassIcon className='h-10 border hover:ring-1 ring-black'/></button>
             </form>
         </div>
-        {results.map((book) =><Book img={book.volumeInfo.imageLinks.thumbnail}
+        {results.map((book) =><Book key={book.id} img={book.volumeInfo.imageLinks.thumbnail}
             title={book.volumeInfo.title} id={book.id} link={book.volumeInfo.infoLink}/>)}
     </div>
   )
