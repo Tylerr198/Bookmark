@@ -1,15 +1,14 @@
 import React from 'react'
+import { PlusCircleIcon } from '@heroicons/react/24/outline'
 
-function Book() {
+function Book({title, img, link, id}) {
   return (
-      <div className='flex gap-4 mt-5 mx-10 item-center'>
+      <div key={id} className='flex gap-4 mt-5 mx-11 item-center shadow'>
         <div className=' h-[200px]'>
             <div className='flex items-center'>
-                <img src="http://books.google.com/books/content?id=L18VBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
-                    alt=''/>
-                <button className='border h-[30px] ml-2'>Add</button>
-        
-            <p className=''>The Psychology of Harry Potter</p>
+                <a target='_black' href={link}><img src={img}/></a>
+                <PlusCircleIcon className='h-7 w-7 mx-2 hover:scale-125 cursor-pointer transition-all duration-150 ease-out;'/>
+            <p className='hover:underline'><a target='_black' href={link}>{title}</a></p>
             </div>
         </div>     
     </div>
